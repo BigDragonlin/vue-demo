@@ -13,16 +13,21 @@
 </template>
 
 
-<script lang="ts" setup name = "Person123">
-    let name = 'John'
-    let age = 20
+<script lang="ts" setup name = "Person">
+    import { ref } from 'vue'
+    let name = ref('John')
+    let age = ref(20)
     let tel = '1234567890'
+    console.log(name)
+    console.log(age)
+    console.log(tel)
+
     // 在setup中，不可以通过this.name获取选项式布局中的name，this是undefined
     function changeName() {
-        name = 'Tom'
+        name.value = 'Tom'
     }
     function changeAge() {
-        age += 1
+        age.value += 1
     }
 
     function showPhone() {

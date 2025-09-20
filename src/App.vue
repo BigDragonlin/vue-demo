@@ -1,7 +1,6 @@
  <!-- 组件的结构 -->
  <template>
     <Person />
-    <Person />
 </template>   
 
  <!-- 组件的逻辑 -->
