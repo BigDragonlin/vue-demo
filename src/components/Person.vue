@@ -1,19 +1,34 @@
 <template>
     <div class="person">
-        <p> sum: {{ sum }}</p>
-        <button @click="add">+</button>
+        <p>Person</p>
+        <p>Name: {{ name }}</p>
+        <p>Age: {{ age }}</p>
+        <button @click="changeName">修改姓名</button>
+        <button @click="changAge">修改年龄</button>
     </div>
     <hr>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref } from 'vue';
-    let sum = ref(0)
-    function add() {
-        // 就像reactive一样，ref也不能这么写
-        // sum = ref(9)
-        sum.value = 9
+    import { reactive, toRefs, toRef } from 'vue';
+    let person = reactive({
+        name: '张三',
+        age: 18
+    })
+
+    console.log(toRefs(person))
+    let {name, age} = toRefs(person)
+    let nl = toRef(person, 'age')
+    function changeName() {
+        name.value += '~'
+        console.log(person)
+        console.log(name)
+    }
+    function changAge() {
+        age.value++
+        console.log(person)
+        console.log(age)
     }
 </script>
 
