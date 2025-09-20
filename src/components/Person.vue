@@ -14,6 +14,7 @@
 
 <script>
 export default {
+    // 选项式api(vue2)
     name: 'Person',
     data() {
         return {

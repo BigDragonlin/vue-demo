@@ -1,10 +1,8 @@
  <!-- 组件的结构 -->
  <template>
-    <div class="app">
-        <h1>Hello World</h1>
-        <Person />
-    </div>
- </template>   
+    <Person />
+    <Person />
+</template>   
 
  <!-- 组件的逻辑 -->
  <script>
