@@ -14,25 +14,31 @@
 
 <script>
 export default {
-    // 选项式api(vue2)
     name: 'Person',
-    data() {
-        return {
-            name: 'John',
-            age: 20,
-            tel: '1234567890'
+    setup() {
+        let name = 'John'
+        let age = 20
+        let tel = '1234567890'
+        function changeName() {
+            console.log('changeName')
+            name = 'Tom'
+            // 点击不会更改name，是因为name是响应式数据
+            console.log(name)
         }
-    },
-    methods: {
-        changeName() {
-            this.name = 'Tom'
-        },
-        changeAge() {
-            this.age += 1
-        },
-        showPhone() {
-            // 弹出电话号码
-            alert(this.tel)
+        function changeAge() {
+            age += 1
+        }
+
+        function showPhone() {
+            alert(tel)
+        }
+        return{
+            name,
+            age,
+            tel,
+            changeName,
+            changeAge,
+            showPhone
         }
     }
 }
