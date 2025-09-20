@@ -19,6 +19,9 @@ export default {
         let name = 'John'
         let age = 20
         let tel = '1234567890'
+        // 这个this是undefined 
+        // console.log(this)
+        // console.log(this)
         function changeName() {
             console.log('changeName')
             name = 'Tom'
