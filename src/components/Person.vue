@@ -29,23 +29,10 @@
         }
     }
 
-    // 监视 情况三：监视reactive定义的对象中基础数据类型的改变
-    watch(() => person.name, (newVal, oldVal) => {
-        console.log('person的name发生了变化', newVal, oldVal)
+    // 监视 情况五：监视reactive定义的对象中某些属性的改变
+    watch([()=>person.name, ()=>person.car.c1], (newVal, oldVal) => {
+        console.log('person的name和car.c1发生了变化', newVal, oldVal)
     })
-    watch(() => person.age, (newVal, oldVal) => {
-        console.log('person的age发生了变化', newVal, oldVal)
-    })
-
-    // 监视 情况四：监视reactive定义的对象中对象类型的改变。匿名函数返回的是地址,所以地址变了就会触发监视
-    watch(() => person.car, (newVal, oldVal) => {
-        console.log('person的car发生了变化', newVal, oldVal)
-    })
-
-    //完美写法
-    watch(() => person, (newVal, oldVal) => {
-        console.log('person的值发生了变化', newVal, oldVal)
-    },{ deep: true })
 </script>
 
 <style>
