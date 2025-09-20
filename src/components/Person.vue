@@ -1,37 +1,58 @@
 <template>
     <div class="person">
-        <h1>Person</h1>
-        <p>Name: {{ name }}</p>
-        <p>Age: {{ age }}</p>
-        <!-- 修改姓名 -->
-        <button @click="changeName">修改姓名</button>
-        <!-- 修改年龄 -->
-        <button @click="changeAge">修改年龄</button>
-        <!-- 点击查看电话号码 -->
-         <button @click="showPhone">查看电话号码</button>
+        <p>Name: {{ car.name }}</p>
+        <p>Price: {{ car.price }}</p>
+        <p>Color: {{ car.color }}</p>
+        <button @click="changePrice">涨价</button>
     </div>
+    <hr> </hr>
+    <ul>
+        <li v-for="game in games" :key="game.id">
+            Name: {{ game.name }}
+            Price: {{ game.price }}
+        </li>
+        <button @click="changeGamePrice">涨价</button>
+    </ul>
+
+    <hr> </hr>
+    <p>C: {{ test.a.b.c }}</p>
+    <button @click="changeC">涨价</button>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref } from 'vue'
-    let name = ref('John')
-    let age = ref(20)
-    let tel = '1234567890'
-    console.log(name)
-    console.log(age)
-    console.log(tel)
+    import { reactive } from 'vue';
 
-    // 在setup中，不可以通过this.name获取选项式布局中的name，this是undefined
-    function changeName() {
-        name.value = 'Tom'
-    }
-    function changeAge() {
-        age.value += 1
+    let car = reactive({
+        name: '宝马',
+        price: 1000000,
+        color: '红色'
+    })
+
+    let games = reactive([
+        {id: 1, name: '王者荣耀', price: 100},
+        {id: 2, name: '和平精英', price: 100},
+        {id: 3, name: '原神', price: 100},
+    ])
+
+    // reactive包裹对象叫做响应式对象，影响是深层次的
+    let test = reactive({
+        a :{
+            b :{
+                c : 100
+            }
+        }
+    })
+    function changePrice() {
+        car.price += 10
     }
 
-    function showPhone() {
-        alert(tel)
+    function changeGamePrice() {
+        games[0].price += 10
+    }
+
+    function changeC() {
+        test.a.b.c += 10
     }
 </script>
 
@@ -44,5 +65,11 @@
 
     button {
         margin-right: 10px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 20px;
+        background-color: #f0f0f0;
     }
 </style>
