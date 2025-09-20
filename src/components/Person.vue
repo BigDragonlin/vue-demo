@@ -1,49 +1,26 @@
 <template>
     <div class="person">
-        姓：<input type="text" v-model="firstName">
-        名：<input type="text" v-model="lastName">
-        <button @click="changeFullName">修改全名</button>
-        <p>全名方法1：{{ firstName }} - {{ lastName }}</p>
-        <p>全名方法2：{{ getFullName() }}</p>
-        <p>全名方法2：{{ getFullName() }}</p>
-        <p>全名方法3：{{ fullName }}</p>
-        <p>全名方法4：{{ fullName }}</p>    
+        <h1>监视【ref】定义的基本类型数据</h1>
+        <h2>当前求和为：{{ sum }}</h2>
+        <button @click="changeSum">点我sum加1</button>
     </div>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref, computed } from 'vue';
-    let firstName = ref('zhang')
-    let lastName = ref('san')
-
-    // 函数没有缓存
-    function getFullName() {
-        console.log('getFullName function is called')
-        return firstName.value + ' ' + lastName.value
+    import { ref, watch } from 'vue';
+    let sum = ref(0)
+    function changeSum() {
+        sum.value++
     }
 
-    // 计算属性,计算属性有缓存,且是只读的
-    // let fullName = computed(() => {
-    //     console.log('fullName computed is called')
-    //     return firstName.value + ' ' + lastName.value
-    // })
-
-    //计算属性，可读写
-    let fullName = computed({
-        get() {
-            return firstName.value + ' ' + lastName.value
-        },
-        set(value) {
-            let [tempFirstName, tempLastName] = value.split(' ')
-            firstName.value = tempFirstName
-            lastName.value = tempLastName
-            
+    //监视：情况1️一：监视ref定义的基本类型数据
+    let stopWatch = watch(sum, (newVal, oldVal) => {
+        console.log('sum的值发生了变化', newVal, oldVal)
+        if (sum.value >= 5) {
+            stopWatch()
         }
     })
-    function changeFullName() {
-        fullName.value = 'wang' + ' ' + 'wu'
-    }
 </script>
 
 <style>
