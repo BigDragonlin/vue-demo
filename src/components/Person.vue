@@ -1,34 +1,48 @@
 <template>
     <div class="person">
-        <p>Person</p>
-        <p>Name: {{ name }}</p>
-        <p>Age: {{ age }}</p>
-        <button @click="changeName">修改姓名</button>
-        <button @click="changAge">修改年龄</button>
+        姓：<input type="text" v-model="firstName">
+        名：<input type="text" v-model="lastName">
+        <button @click="changeFullName">修改全名</button>
+        <p>全名方法1：{{ firstName }} - {{ lastName }}</p>
+        <p>全名方法2：{{ getFullName() }}</p>
+        <p>全名方法2：{{ getFullName() }}</p>
+        <p>全名方法3：{{ fullName }}</p>
+        <p>全名方法4：{{ fullName }}</p>    
     </div>
-    <hr>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { reactive, toRefs, toRef } from 'vue';
-    let person = reactive({
-        name: '张三',
-        age: 18
-    })
+    import { ref, computed } from 'vue';
+    let firstName = ref('zhang')
+    let lastName = ref('san')
 
-    console.log(toRefs(person))
-    let {name, age} = toRefs(person)
-    let nl = toRef(person, 'age')
-    function changeName() {
-        name.value += '~'
-        console.log(person)
-        console.log(name)
+    // 函数没有缓存
+    function getFullName() {
+        console.log('getFullName function is called')
+        return firstName.value + ' ' + lastName.value
     }
-    function changAge() {
-        age.value++
-        console.log(person)
-        console.log(age)
+
+    // 计算属性,计算属性有缓存,且是只读的
+    // let fullName = computed(() => {
+    //     console.log('fullName computed is called')
+    //     return firstName.value + ' ' + lastName.value
+    // })
+
+    //计算属性，可读写
+    let fullName = computed({
+        get() {
+            return firstName.value + ' ' + lastName.value
+        },
+        set(value) {
+            let [tempFirstName, tempLastName] = value.split(' ')
+            firstName.value = tempFirstName
+            lastName.value = tempLastName
+            
+        }
+    })
+    function changeFullName() {
+        fullName.value = 'wang' + ' ' + 'wu'
     }
 </script>
 
