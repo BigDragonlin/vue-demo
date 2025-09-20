@@ -2,14 +2,20 @@
  <template>
     <div class="app">
         <h1>Hello World</h1>
+        <Person />
     </div>
  </template>   
 
  <!-- 组件的逻辑 -->
  <script>
+    // 引入Person组件
+    import Person from './components/Person.vue'
     // 默认组件名
     export default {
-        name: 'App'
+        name: 'App',
+        components: {
+            Person
+        }
     }
 </script>
 
