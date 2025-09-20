@@ -1,28 +1,45 @@
 <template>
     <div class="person">
-        <h1>监视【ref】定义的基本类型数据</h1>
-        <h2>当前求和为：{{ sum }}</h2>
-        <button @click="changeSum">点我sum加1</button>
+        <h1>监视【ref】定义的类</h1>
+        <h2>Name: {{ person.name }}</h2>
+        <h2>Age: {{ person.age }}</h2>
+        <button @click="changeName">点我name改李四</button>
+        <button @click="changePerson">点我person改李四</button>
     </div>
 </template>
 
 
 <script lang="ts" setup name = "Person">
     import { ref, watch } from 'vue';
-    let sum = ref(0)
-    function changeSum() {
-
-        // 在vue插件中配置dotvalue, 可以自动插入.value
-        sum.value += 1
-    }
-
-    //监视：情况1️一：监视ref定义的基本类型数据
-    let stopWatch = watch(sum, (newVal, oldVal) => {
-        console.log('sum的值发生了变化', newVal, oldVal)
-        if (sum.value >= 5) {
-            stopWatch()
-        }
+    let person = ref({
+        name: '张三',
+        age: 18
     })
+    function changeName() {
+        person.value.name = '李四'
+    }
+    function changePerson() {
+        person.value = {
+            name: '李四',
+            age: 20
+        }
+    }
+    // 监视：情况2️一：监视ref定义的对象类型数据
+    // 只有地址变的话，才会触发监视
+    // watch(person, (newVal, oldVal) => {
+    //     console.log('person的值发生了变化', newVal, oldVal)
+    // })
+
+    // 深度监视，监视对象中所有属性的变化
+    // watch(person, (newVal, oldVal) => {
+    //     console.log('person的值发生了变化', newVal, oldVal)
+    // }, { deep: true })
+
+    // 立即监视
+    watch(() => person, (newVal, oldVal) => {
+        console.log('person的值发生了变化', newVal, oldVal)
+    },{ immediate: true ,deep: true })
+
 </script>
 
 <style>
