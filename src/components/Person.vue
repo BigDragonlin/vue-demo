@@ -1,40 +1,19 @@
 <template>
     <div class="person">
-        <p>Name: {{ car.name }}</p>
-        <p>Price: {{ car.price }}</p>
-        <p>Color: {{ car.color }}</p>
-        <button @click="changCar">换车</button>
+        <p> sum: {{ sum }}</p>
+        <button @click="add">+</button>
     </div>
     <hr>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { reactive } from 'vue';
-    let car = reactive({
-        name: '宝马',
-        price: 1000000,
-        color: '红色'
-    })
-    function changCar() {
-        // 直接复制不更新
-        // car = {
-        //     name: '奔驰',
-        //     price: 2000000,
-        //     color: '蓝色'
-        // }
-
-        // 直接赋值不更新
-        // car = ref({
-        //     name: '奔驰',
-        //     price: 2000000,
-        //     color: '蓝色'
-        // })
-        Object.assign(car, {
-            name: '奔驰',
-            price: 2000000,
-            color: '蓝色'
-        })
+    import { ref } from 'vue';
+    let sum = ref(0)
+    function add() {
+        // 就像reactive一样，ref也不能这么写
+        // sum = ref(9)
+        sum.value = 9
     }
 </script>
 
