@@ -35,13 +35,21 @@ export default {
         function showPhone() {
             alert(tel)
         }
-        return{
-            name,
-            age,
-            tel,
-            changeName,
-            changeAge,
-            showPhone
+        // return{
+        //     name,
+        //     age,
+        //     tel,
+        //     changeName,
+        //     changeAge,
+        //     showPhone
+        // }
+
+        // setup也可以直接返回渲染函数
+        // return function(){
+        //     "哈哈"
+        // }
+        return ()=>{
+            "哈哈"
         }
     }
 }
