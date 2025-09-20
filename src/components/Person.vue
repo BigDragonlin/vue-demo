@@ -11,7 +11,9 @@
     import { ref, watch } from 'vue';
     let sum = ref(0)
     function changeSum() {
-        sum.value++
+
+        // 在vue插件中配置dotvalue, 可以自动插入.value
+        sum.value += 1
     }
 
     //监视：情况1️一：监视ref定义的基本类型数据
