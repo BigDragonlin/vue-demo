@@ -3,22 +3,38 @@
         <p>Name: {{ car.name }}</p>
         <p>Price: {{ car.price }}</p>
         <p>Color: {{ car.color }}</p>
-        <button @click="changePrice">涨价</button>
+        <button @click="changCar">换车</button>
     </div>
     <hr>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref } from 'vue';
-
-    let car = ref({
+    import { reactive } from 'vue';
+    let car = reactive({
         name: '宝马',
         price: 1000000,
         color: '红色'
     })
-    function changePrice() {
-        car.value.price += 10
+    function changCar() {
+        // 直接复制不更新
+        // car = {
+        //     name: '奔驰',
+        //     price: 2000000,
+        //     color: '蓝色'
+        // }
+
+        // 直接赋值不更新
+        // car = ref({
+        //     name: '奔驰',
+        //     price: 2000000,
+        //     color: '蓝色'
+        // })
+        Object.assign(car, {
+            name: '奔驰',
+            price: 2000000,
+            color: '蓝色'
+        })
     }
 </script>
 
