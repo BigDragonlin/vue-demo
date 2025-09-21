@@ -1,37 +1,35 @@
 <template>
-    <div>???</div>
+    <dic>sum: {{ sum }}</dic>
+    <button @click="addSum">点我加一</button>
+    <hr></hr>
+    <!-- 图片展示 -->
+    <img v-for="value in dogList" :src="value" alt="dog"></img>
+    <hr></hr>
+    <button @click="getDog">点我多加一只狗狗</button>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import {onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
-    //vue3生命周期
-    //create
-    console.log('create');
-    // 挂载前
-    onBeforeMount(() => {
-        console.log('beforeMount');
-    });
-    // 挂载后
-    onMounted(() => {
-        console.log('mounted');
-    });
-    // 更新前
-    onBeforeUpdate(() => {
-        console.log('beforeUpdate');
-    });
-    // 更新后
-    onUpdated(() => {
-        console.log('updated');
-    });
-    // 卸载前
-    onBeforeUnmount(() => {
-        console.log('beforeUnmount');
-    });
-    // 卸载后
-    onUnmounted(() => {
-        console.log('unmounted');
-    });
+    import axios from 'axios';
+    import { ref } from 'vue';
+    let sum = ref(0);
+    function addSum() {
+        sum.value++;
+    }
+
+    let dogList = ref([
+        'https:\/\/images.dog.ceo\/breeds\/pembroke\/n02113023_3913.jpg',
+    ]);
+
+    async function getDog() {
+        try {
+            let res = await axios.get('https://dog.ceo/api/breed/pembroke/images/random');
+            // console.log(res.data.message);
+            dogList.value.push(res.data.message);
+        } catch (error) {
+            alert('获取狗狗失败'+error);
+        }
+    }
 </script>
 
 <style scoped>
@@ -49,5 +47,11 @@
         list-style: none;
         padding: 20px;
         background-color: #f0f0f0;
+    }
+
+    img {
+        width: 300px;
+        /* 间隙 */
+        margin: 10px;
     }
 </style>
