@@ -1,38 +1,17 @@
 <template>
     <div class="person">
-        <h1>当水温达到60度或者水位达到80cm时，给服务期发请求</h1>
-        <h1>当前的水温是：{{ temperature }}</h1>
-        <h1>当前的水位是：{{ water }}</h1>
-        <button @click="addTemperature">水温+10</button>
-        <button @click="addWater">水位+10</button>
+        <h1>中国</h1>
+        <h2 id="h2">浙江</h2>
+        <h3>杭州</h3>
+        <button @click="showH2">显示h2</button>
     </div>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref, watch, watchEffect } from 'vue';
-    let temperature = ref(10)
-    let water = ref(15)
-    function addTemperature() {
-        temperature.value += 10
+    function showH2() {
+        console.log(document.getElementById('h2'))
     }
-    function addWater() {
-        water.value += 10
-    }
-
-    // watch的写法
-    // watch([()=>temperature.value, ()=>water.value], (newVal, oldVal) => {
-    //     if(newVal[0] >= 60 || newVal[1] >= 80) {
-    //         console.log('水温达到60度或者水位达到80cm时，给服务期发请求')
-    //     }
-    // })
-
-    // watchEffect的写法
-    watchEffect(() => {
-        if(temperature.value >= 60 || water.value >= 80) {
-            console.log('水温达到60度或者水位达到80cm时，给服务期发请求')
-        }
-    })
 </script>
 
 <style>

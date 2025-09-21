@@ -4,16 +4,9 @@
 </template>   
 
  <!-- 组件的逻辑 -->
- <script>
+ <script setup lang="ts" name="App">
     // 引入Person组件
     import Person from './components/Person.vue'
-    // 默认组件名
-    export default {
-        name: 'App',
-        components: {
-            Person
-        }
-    }
 </script>
 
  <!-- 组件的样式 -->
