@@ -5,19 +5,20 @@
         <h2 class="title">Vue路由测试</h2>
         <!-- 导航区 -->
         <div class="nav">
-            <a href="/home">首页</a>
-            <a href="/news">新闻</a>
-            <a href="/about">关于</a>
+            <RouterLink to="/home" active-class="btn">首页</RouterLink>
+            <RouterLink to="/news" active-class="btn">新闻</RouterLink>
+            <RouterLink to="/about" active-class="btn">关于</RouterLink>
         </div>
          <!-- 展示区 -->
         <div class="content">
-            展示内容
+            <RouterView></RouterView>
         </div>
     </div>
 </template>   
 
  <!-- 组件的逻辑 -->
  <script setup lang="ts" name="App">
+    import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <style scoped>
@@ -39,6 +40,13 @@
         gap: 50px;
     }
     .content {
+        margin: 10px 0;
+        text-align: center;
+        /* 方框包围 */
+        border: 5px solid #000;
+    }
+    /* 按钮样式 */
+    .btn {
         margin: 10px 0;
         text-align: center;
         /* 方框包围 */
