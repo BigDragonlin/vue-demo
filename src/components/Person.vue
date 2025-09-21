@@ -1,37 +1,41 @@
 <template>
-    <div>???</div>
+    <ul>
+        <li v-for="item in list" :key="item.id">
+            {{ item.id }} - {{ item.name }} - {{ item.age }} - {{ item.sex }}
+        </li>
+    </ul>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    import { ref, defineExpose } from 'vue'
-    import { type PersonInter, type PersonsInter } from '@/types'
-    let person: PersonInter = {
-        name: '张三',
-        age: 18,
-    }
+    // difineProps和withDefaults是宏函数,可以不引入直接调用
+    // import { defineProps, withDefaults } from 'vue';
+    import { type PersonsInter } from '@/types';
+    // 只接受list
+    // defineProps(['list']);
 
-    let persons: Array<PersonInter> = [
-        {
-            name: '李四',
-            age: 20,
-        },
-        {
-            name: '王五',
-            age: 22,
-        },
-    ]
+    //接受list加限制类型
+    // defineProps<{
+    //     list: PersonsInter
+    // }>();
 
-    let newPersons: PersonsInter = [
-        {
-            name: '赵六',
-            age: 24,
-        },
-        {
-            name: '孙七',
-            age: 26,
-        },
-    ]
+    //接受list+限制类型+限制必要性+指定默认值
+    withDefaults(defineProps<{
+        list?: PersonsInter
+    }>(), {
+        list: () => [
+            {
+                id: 1,
+                name: '张三',
+                age: 18,
+            },
+            {
+                id: 2,
+                name: '李四',
+                age: 20,
+            }
+        ]
+    });
 </script>
 
 <style scoped>
