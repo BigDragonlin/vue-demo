@@ -1,6 +1,5 @@
  <!-- 组件的结构 -->
  <template>
-    <h2 ref="say">你好</h2>
     <Person />
 </template>   
 
@@ -11,7 +10,7 @@
 </script>
 
  <!-- 组件的样式 -->
-<style>
+<style scoped>
     .app {
         background-color: #f0f0f0;
         padding: 20px;
