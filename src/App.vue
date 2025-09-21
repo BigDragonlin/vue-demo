@@ -1,7 +1,47 @@
  <!-- 组件的结构 -->
  <template>
+    <div class="app">
+        <!-- 标题 -->
+        <h2 class="title">Vue路由测试</h2>
+        <!-- 导航区 -->
+        <div class="nav">
+            <a href="/home">首页</a>
+            <a href="/news">新闻</a>
+            <a href="/about">关于</a>
+        </div>
+         <!-- 展示区 -->
+        <div class="content">
+            展示内容
+        </div>
+    </div>
 </template>   
 
  <!-- 组件的逻辑 -->
  <script setup lang="ts" name="App">
 </script>
+
+<style scoped>
+    .app {
+        width: 100%;
+        height: 100%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .title {
+        text-align: center;
+    }
+    .nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* 间隔 */
+        gap: 50px;
+    }
+    .content {
+        margin: 10px 0;
+        text-align: center;
+        /* 方框包围 */
+        border: 5px solid #000;
+    }
+</style>
