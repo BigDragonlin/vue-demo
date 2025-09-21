@@ -9,14 +9,23 @@
 
 
 <script lang="ts" setup name = "Person">
-    import { ref } from 'vue'
+    import { ref, defineExpose } from 'vue'
     let say = ref(null)
     function showH2() {
         console.log(say.value)
     }
+    let p1 = ref(100)
+    let p2 = ref(200)
+    // 暴露出去给父组件
+    defineExpose({
+        p1,
+        p2
+    })
+
+
 </script>
 
-<style>
+<style scoped>
     .person {
         background-color: #f0f0f0;
         padding: 20px;
