@@ -1,40 +1,36 @@
 <template>
-    <ul>
-        <li v-for="item in list" :key="item.id">
-            {{ item.id }} - {{ item.name }} - {{ item.age }} - {{ item.sex }}
-        </li>
-    </ul>
+    <div>???</div>
 </template>
 
 
 <script lang="ts" setup name = "Person">
-    // difineProps和withDefaults是宏函数,可以不引入直接调用
-    // import { defineProps, withDefaults } from 'vue';
-    import { type PersonsInter } from '@/types';
-    // 只接受list
-    // defineProps(['list']);
-
-    //接受list加限制类型
-    // defineProps<{
-    //     list: PersonsInter
-    // }>();
-
-    //接受list+限制类型+限制必要性+指定默认值
-    withDefaults(defineProps<{
-        list?: PersonsInter
-    }>(), {
-        list: () => [
-            {
-                id: 1,
-                name: '张三',
-                age: 18,
-            },
-            {
-                id: 2,
-                name: '李四',
-                age: 20,
-            }
-        ]
+    import {onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted } from 'vue';
+    //vue3生命周期
+    //create
+    console.log('create');
+    // 挂载前
+    onBeforeMount(() => {
+        console.log('beforeMount');
+    });
+    // 挂载后
+    onMounted(() => {
+        console.log('mounted');
+    });
+    // 更新前
+    onBeforeUpdate(() => {
+        console.log('beforeUpdate');
+    });
+    // 更新后
+    onUpdated(() => {
+        console.log('updated');
+    });
+    // 卸载前
+    onBeforeUnmount(() => {
+        console.log('beforeUnmount');
+    });
+    // 卸载后
+    onUnmounted(() => {
+        console.log('unmounted');
     });
 </script>
 
