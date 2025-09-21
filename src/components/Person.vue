@@ -1,28 +1,37 @@
 <template>
-    <div class="person">
-        <h1>中国</h1>
-        <h2 ref="say">浙江</h2>
-        <h3>杭州</h3>
-        <button @click="showH2">显示h2</button>
-    </div>
+    <div>???</div>
 </template>
 
 
 <script lang="ts" setup name = "Person">
     import { ref, defineExpose } from 'vue'
-    let say = ref(null)
-    function showH2() {
-        console.log(say.value)
+    import { type PersonInter, type PersonsInter } from '@/types'
+    let person: PersonInter = {
+        name: '张三',
+        age: 18,
     }
-    let p1 = ref(100)
-    let p2 = ref(200)
-    // 暴露出去给父组件
-    defineExpose({
-        p1,
-        p2
-    })
 
+    let persons: Array<PersonInter> = [
+        {
+            name: '李四',
+            age: 20,
+        },
+        {
+            name: '王五',
+            age: 22,
+        },
+    ]
 
+    let newPersons: PersonsInter = [
+        {
+            name: '赵六',
+            age: 24,
+        },
+        {
+            name: '孙七',
+            age: 26,
+        },
+    ]
 </script>
 
 <style scoped>
