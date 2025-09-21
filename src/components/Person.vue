@@ -10,26 +10,10 @@
 
 
 <script lang="ts" setup name = "Person">
-    import axios from 'axios';
-    import { ref } from 'vue';
-    let sum = ref(0);
-    function addSum() {
-        sum.value++;
-    }
-
-    let dogList = ref([
-        'https:\/\/images.dog.ceo\/breeds\/pembroke\/n02113023_3913.jpg',
-    ]);
-
-    async function getDog() {
-        try {
-            let res = await axios.get('https://dog.ceo/api/breed/pembroke/images/random');
-            // console.log(res.data.message);
-            dogList.value.push(res.data.message);
-        } catch (error) {
-            alert('获取狗狗失败'+error);
-        }
-    }
+    import useSum from '@/hooks/useSum';
+    import useDog from '@/hooks/useDog';
+    const { sum, addSum } = useSum();
+    const { dogList, getDog } = useDog();
 </script>
 
 <style scoped>
@@ -50,7 +34,7 @@
     }
 
     img {
-        width: 300px;
+        height: 300px;
         /* 间隙 */
         margin: 10px;
     }
