@@ -1,7 +1,7 @@
 <template>
     <div class="person">
         <h1>中国</h1>
-        <h2 id="h2">浙江</h2>
+        <h2 ref="say">浙江</h2>
         <h3>杭州</h3>
         <button @click="showH2">显示h2</button>
     </div>
@@ -9,8 +9,10 @@
 
 
 <script lang="ts" setup name = "Person">
+    import { ref } from 'vue'
+    let say = ref(null)
     function showH2() {
-        console.log(document.getElementById('h2'))
+        console.log(say.value)
     }
 </script>
 

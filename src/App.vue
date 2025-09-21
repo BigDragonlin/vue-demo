@@ -1,6 +1,6 @@
  <!-- 组件的结构 -->
  <template>
-    <h2 id="h2">你好</h2>
+    <h2 ref="say">你好</h2>
     <Person />
 </template>   
 
