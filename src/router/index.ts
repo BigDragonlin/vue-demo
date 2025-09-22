@@ -23,7 +23,20 @@ const router = createRouter({
                 {
                     name: 'detail',
                     path: 'detail/:id/:title/:content?',
-                    component: Detils
+                    component: Detils,
+                    // 方法一，将路由收到的所有prams参数传给props
+                    // props: true
+
+                    // 方法二，将路由收到的所有query参数传给props
+                    // props: (route) => route.query
+                    props: (route) => route.params
+
+                    // //方法三，固定参数
+                    // props: {
+                    //     id: '1',
+                    //     title: '新闻1',
+                    //     content: '新闻1内容'
+                    // }
                 }
             ]
         },
@@ -34,4 +47,4 @@ const router = createRouter({
     ]
 })
 
-export default router;
+export default router;// 

@@ -1,13 +1,11 @@
 <template>
-    <li>编号{{ route.params.id }}</li>
-    <li>标题{{ route.params.title }}</li>
-    <li>内容{{ route.params.content }}</li>
+    <li>编号{{ id }}</li>
+    <li>标题{{ title }}</li>
+    <li>内容{{ content }}</li>
 </template>
 
 <script setup lang="ts" name="Detils">
-    import { useRoute } from 'vue-router';
-    let route = useRoute();
-    console.log(route);
+    defineProps(['id', 'title', 'content']);
 </script>
 
 <style scoped>
