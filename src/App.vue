@@ -9,7 +9,7 @@
         <div class="nav">
             <RouterLink to="/home" active-class="btn">首页</RouterLink>
             <RouterLink to="/news" active-class="btn">新闻</RouterLink>
-            <RouterLink to="/about" active-class="btn">关于</RouterLink>
+            <RouterLink :to="{path:'/about'}" active-class="btn">关于</RouterLink>
         </div>
          <!-- 展示区 -->
         <div class="content">
