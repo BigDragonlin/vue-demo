@@ -3,6 +3,7 @@ import { createRouter, createWebHistory, createWebHashHistory} from 'vue-router'
 import Home from '@/pages/Home.vue';
 import News from '@/pages/News.vue';
 import About from '@/pages/About.vue';
+import Detils from '@/pages/Detils.vue';
 
 // 创建路由实例
 const router = createRouter({
@@ -12,17 +13,20 @@ const router = createRouter({
     history: createWebHistory(),//历史模式
     routes: [
         {
-            name: 'zhuye',
             path: '/home',
             component: Home
         },
         {
-            name: 'xinwen',
             path: '/news',
-            component: News
+            component: News,
+            children: [
+                {
+                    path: 'detail',
+                    component: Detils
+                }
+            ]
         },
         {
-            name: 'guanyu',
             path: '/about',
             component: About
         },

@@ -1,15 +1,13 @@
  <!-- 组件的结构 -->
  <template>
     <div class="app">
-        <!-- 路由组件一般存在pages或者views文件夹中，一般组件一般存在components文件夹中 -->
-        <Hearder></Hearder>
         <!-- 标题 -->
         <h2 class="title">Vue路由测试</h2>
         <!-- 导航区 -->
         <div class="nav">
             <RouterLink to="/home" active-class="btn">首页</RouterLink>
-            <RouterLink :to="{name:'xinwen'}" active-class="btn">新闻</RouterLink>
-            <RouterLink :to="{path:'/about'}" active-class="btn">关于</RouterLink>
+            <RouterLink to="/news" active-class="btn">新闻</RouterLink>
+            <RouterLink to="/about" active-class="btn">关于</RouterLink>
         </div>
          <!-- 展示区 -->
         <div class="content">
@@ -20,8 +18,6 @@
 
  <!-- 组件的逻辑 -->
  <script setup lang="ts" name="App">
-    import { RouterLink, RouterView } from 'vue-router';
-    import Hearder from '@/components/Hearder.vue';
 </script>
 
 <style scoped>
@@ -44,7 +40,7 @@
     }
     .content {
         margin: 10px 0;
-        text-align: center;
+        text-align: left;
         /* 方框包围 */
         border: 5px solid #000;
     }
