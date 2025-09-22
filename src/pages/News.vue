@@ -4,18 +4,18 @@
         <ul>
             <li v-for="item in news" :key="item.id">
                 <!-- 方式一 -->
-                <!-- <RouterLink :to="`/news/detail?id=${item.id}&title=${item.title}&content=${item.content}`">{{ item.title }}</RouterLink> -->
-                 <!-- 方式二 -->
-                <RouterLink 
-                :to="{ 
-                    path: '/news/detail', 
-                    query: { 
-                        id: item.id, 
-                        title: item.title, 
-                        content: item.content } 
-                        }">
-                        {{ item.title }}
-                    </RouterLink>
+                <!-- <RouterLink :to="`/news/detail/${item.id}/${item.title}/${item.content}`">{{ item.title }} -->
+                
+                <!-- 方式而 -->
+                <RouterLink :to="{
+                    name : 'detail',
+                    params: {
+                        id: item.id,
+                        title: item.title,
+                        content: item.content
+                    }
+                }">{{ item.title }}
+                </RouterLink>
             </li>
         </ul>
     </div>
