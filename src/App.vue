@@ -1,6 +1,8 @@
  <!-- 组件的结构 -->
  <template>
     <div class="app">
+        <!-- 路由组件一般存在pages或者views文件夹中，一般组件一般存在components文件夹中 -->
+        <Hearder></Hearder>
         <!-- 标题 -->
         <h2 class="title">Vue路由测试</h2>
         <!-- 导航区 -->
@@ -19,6 +21,7 @@
  <!-- 组件的逻辑 -->
  <script setup lang="ts" name="App">
     import { RouterLink, RouterView } from 'vue-router';
+    import Hearder from '@/components/Hearder.vue';
 </script>
 
 <style scoped>
