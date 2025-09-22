@@ -5,7 +5,8 @@
         <h2 class="title">Vue路由测试</h2>
         <!-- 导航区 -->
         <div class="nav">
-            <RouterLink to="/home" active-class="btn">首页</RouterLink>
+            <!-- replace属性，点击后不保留历史记录 -->
+            <RouterLink replace to="/home" active-class="btn">首页</RouterLink>
             <RouterLink to="/news" active-class="btn">新闻</RouterLink>
             <RouterLink to="/about" active-class="btn">关于</RouterLink>
         </div>
