@@ -7,7 +7,13 @@
 </template>
 
 <script setup lang="ts" name="News">
-
+    import { onMounted, onUnmounted } from 'vue';
+    onMounted(() => {
+        console.log('News组件挂载了');
+    });
+    onUnmounted(() => {
+        console.log('News组件卸载了');
+    });
 </script>
 
 <style scoped>
