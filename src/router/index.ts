@@ -22,7 +22,7 @@ const router = createRouter({
             children: [
                 {
                     name: 'detail',
-                    path: 'detail/:id/:title/:content',
+                    path: 'detail/:id/:title/:content?',
                     component: Detils
                 }
             ]

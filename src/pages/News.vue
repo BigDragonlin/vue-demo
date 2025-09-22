@@ -29,7 +29,7 @@
     const news = reactive([
         { id: 1, title: '新闻1', content: '新闻1内容'},
         { id: 2, title: '新闻2', content: '新闻2内容'},
-        { id: 3, title: '新闻3', content: '新闻3内容'},
+        { id: 3, title: '新闻3'},
     ]);
 </script>
 
