@@ -3,10 +3,7 @@
         <!-- 遍历news数据 -->
         <ul>
             <li v-for="item in news" :key="item.id">
-                <!-- 方式一 -->
-                <!-- <RouterLink :to="`/news/detail/${item.id}/${item.title}/${item.content}`">{{ item.title }} -->
-                
-                <!-- 方式而 -->
+                <button @click="goDetail(item)">查看详情</button>
                 <RouterLink :to="{
                     name : 'detail',
                     params: {
@@ -26,6 +23,18 @@
 
 <script setup lang="ts" name="News">
     import { reactive } from 'vue';
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+    function goDetail(item: any) {
+        router.push({
+            name: 'detail',
+            params: {
+                id: item.id,
+                title: item.title,
+                content: item.content
+            }
+        });
+    }
     const news = reactive([
         { id: 1, title: '新闻1', content: '新闻1内容'},
         { id: 2, title: '新闻2', content: '新闻2内容'},

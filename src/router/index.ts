@@ -13,6 +13,7 @@ const router = createRouter({
     history: createWebHistory(),//历史模式
     routes: [
         {
+            name: '',
             path: '/home',
             component: Home
         },

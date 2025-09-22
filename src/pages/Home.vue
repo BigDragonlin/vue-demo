@@ -5,6 +5,11 @@
 </template>
 
 <script setup lang="ts" name="Home">
+    import { useRouter } from 'vue-router';
+    const router = useRouter();
+    setTimeout(() => {
+        router.push('/news');
+    }, 3000);
 </script>
 
 <style scoped>
