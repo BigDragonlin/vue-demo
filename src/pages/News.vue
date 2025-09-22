@@ -3,7 +3,19 @@
         <!-- 遍历news数据 -->
         <ul>
             <li v-for="item in news" :key="item.id">
-                <RouterLink :to="`/news/detail?id=${item.id}&title=${item.title}&content=${item.content}`">{{ item.title }}</RouterLink>
+                <!-- 方式一 -->
+                <!-- <RouterLink :to="`/news/detail?id=${item.id}&title=${item.title}&content=${item.content}`">{{ item.title }}</RouterLink> -->
+                 <!-- 方式二 -->
+                <RouterLink 
+                :to="{ 
+                    path: '/news/detail', 
+                    query: { 
+                        id: item.id, 
+                        title: item.title, 
+                        content: item.content } 
+                        }">
+                        {{ item.title }}
+                    </RouterLink>
             </li>
         </ul>
     </div>

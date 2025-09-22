@@ -6,7 +6,7 @@
 
 <script setup lang="ts" name="Detils">
     import { useRoute } from 'vue-router';
-    const route = useRoute();
+    let route = useRoute();
 </script>
 
 <style scoped>
