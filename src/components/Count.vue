@@ -1,6 +1,8 @@
 <template>
     <div class="count">
         <h2>当前求和为{{ countStore.count }}</h2>
+        <h2>当前学校为{{ countStore.school }}</h2>
+        <h2>当前专业为{{ countStore.subject }}</h2>
         <select v-model.number="n">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -18,7 +20,19 @@
 
     const n = ref(1);
     const increment = () => {
-        countStore.count += n.value;
+        //第一种修改pinia中数据的方式
+        // countStore.count += n.value;
+
+        //第二种修改pinia中数据的方式
+        // countStore.$patch({
+        //     count: countStore.count + n.value,
+        //     school: '南昌大学',
+        //     subject: '软件工程'
+        // });
+
+        //第三种修改pinia中数据的方式
+        countStore.addCount(n.value);
+
     };
     const decrement = () => {
         countStore.count -= n.value;
