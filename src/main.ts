@@ -1,8 +1,11 @@
-// 引入vue
 import { createApp } from 'vue'
+// 引入pinia
+import { createPinia } from 'pinia'
 // 引入App组件
 import App from './App.vue'
-// 创建应用实例
 let app = createApp(App)
-// 挂载应用
+// 创建pinia实例
+let pinia = createPinia()
+// 使用pinia
+app.use(pinia)
 app.mount('#app')
