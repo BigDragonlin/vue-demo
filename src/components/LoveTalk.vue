@@ -1,6 +1,6 @@
 <template>
     <div class="love-talk">
-        <ul v-for="value in talkList" :key="value.id">
+        <ul v-for="value in loveTalkStore.talkList" :key="value.id">
             <li>{{ value.info }}</li>
         </ul>
         <button @click="getLoveTalk">获取土味情话</button>
@@ -8,21 +8,20 @@
 </template>
 
 <script setup lang="ts" name="LoveTalk">
-    import { ref } from 'vue';
+    import { ref} from 'vue';
     import axios from 'axios';
     import { nanoid } from 'nanoid';
-    let talkList = ref([
-        {id: "1", info: '土味1'},
-        {id: "2", info: '土味2'},
-        {id: "3", info: '土味3'},
-    ]);
+    import { useLoveTalkStore } from '@/store/LoveTalk';
+    let loveTalkStore = useLoveTalkStore();
+    let talkList = ref<{id: string, info: string}[]>([]);
+
 
     async function getLoveTalk() {
         let {data: {content: title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json');
         // let data = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json');
         // console.log(title);
         // console.log(data);
-        talkList.value.unshift({id: nanoid(), info: title});
+        // talkList.value.unshift({id: nanoid(), info: title});
     }
 </script>
 
