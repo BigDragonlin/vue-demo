@@ -1,7 +1,9 @@
 <template>
     <div class="count">
         <h2>当前求和为{{ count }}</h2>
+        <h2>当前求和的10倍为{{ bigCount }}</h2>
         <h2>当前学校为{{ school }}</h2>
+        <h2>当前学校大写为{{ upperSchool }}</h2>
         <h2>当前专业为{{ subject }}</h2>
         <select v-model.number="n">
             <option value="1">1</option>
@@ -19,7 +21,7 @@
     import { storeToRefs } from 'pinia';
     let countStore = useCountStore();
     // 解构不丢失响应式
-    let { count, school, subject } = storeToRefs(countStore);
+    let { count, school, subject, bigCount, upperSchool } = storeToRefs(countStore);
     const n = ref(1);
     const increment = () => {
         countStore.addCount(n.value);
