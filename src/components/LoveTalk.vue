@@ -8,20 +8,10 @@
 </template>
 
 <script setup lang="ts" name="LoveTalk">
-    import { ref} from 'vue';
-    import axios from 'axios';
-    import { nanoid } from 'nanoid';
     import { useLoveTalkStore } from '@/store/LoveTalk';
     let loveTalkStore = useLoveTalkStore();
-    let talkList = ref<{id: string, info: string}[]>([]);
-
-
-    async function getLoveTalk() {
-        let {data: {content: title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json');
-        // let data = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json');
-        // console.log(title);
-        // console.log(data);
-        // talkList.value.unshift({id: nanoid(), info: title});
+    function getLoveTalk() {
+        loveTalkStore.getLoveTalk();
     }
 </script>
 
