@@ -1,6 +1,6 @@
 <template>
     <div class="love-talk">
-        <ul v-for="value in loveTalkStore.talkList" :key="value.id">
+        <ul v-for="value in talkList" :key="value.id">
             <li>{{ value.info }}</li>
         </ul>
         <button @click="getLoveTalk">获取土味情话</button>
@@ -9,7 +9,9 @@
 
 <script setup lang="ts" name="LoveTalk">
     import { useLoveTalkStore } from '@/store/LoveTalk';
+    import { storeToRefs } from 'pinia';
     let loveTalkStore = useLoveTalkStore();
+    let { talkList } = storeToRefs(loveTalkStore);
     function getLoveTalk() {
         loveTalkStore.getLoveTalk();
     }
