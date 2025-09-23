@@ -11,6 +11,10 @@
     import { useLoveTalkStore } from '@/store/LoveTalk';
     import { storeToRefs } from 'pinia';
     let loveTalkStore = useLoveTalkStore();
+    // 订阅loveTalkStore,有变化就调用
+    loveTalkStore.$subscribe((mutation, state) => {
+        localStorage.setItem('loveTalkList', JSON.stringify(state.talkList));
+    });
     let { talkList } = storeToRefs(loveTalkStore);
     function getLoveTalk() {
         loveTalkStore.getLoveTalk();
