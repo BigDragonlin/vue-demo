@@ -2,7 +2,7 @@
   <div class="child">
     <h3>子组件</h3>
 		<h4>玩具：{{ toy }}</h4>
-		
+		<button @click="emit('sendToy',toy)">把玩具给父亲</button>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 	import { ref } from "vue";
 	// 数据
 	let toy = ref('奥特曼')
+	const emit = defineEmits(['sendToy'])
 </script>
 
 <style scoped>
